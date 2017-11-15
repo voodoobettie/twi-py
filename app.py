@@ -19,6 +19,13 @@ def wait():
     response.play("http://demo.brooklynhacker.com/music/christmas.mp3")
     return str(response)
 
+@app.route('/agent', methods=['POST']
+def agent():
+    response = twiml.Response()
+    with response.dial() as dial:
+        dial.queue("Xmas Queue")
+    return str(response)
+
 if __name__ = "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.debug = True
